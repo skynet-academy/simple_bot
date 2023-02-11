@@ -38,7 +38,7 @@ jobs:
     - name: Setting up the env variables
       working-directory: .
       run: |
-        cat << EOF >> notion_connection/.env
+        cat << EOF >> simple_bot/.env
         NOTION_KEY=${{secrets.NOTION_KEY}}
         TELEGRAM_TOKEN=${{secrets.TELEGRAM_TOKEN}}
         NOTION_BASE_URL=${{secrets.NOTION_BASE_URL}}
