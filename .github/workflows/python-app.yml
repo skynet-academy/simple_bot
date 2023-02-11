@@ -24,7 +24,7 @@ jobs:
       with:
         python-version: "3.10"
     - name: Install dependencies
-      working-directory: ./notion_connection
+
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
@@ -39,6 +39,7 @@ jobs:
       run: |
         pytest
     - name: Setting up the env variables
+      working-directory: ./simple_bot
       run: |
         cat << EOF >> notion_connection/.env
         NOTION_KEY=${{secrets.NOTION_KEY}}
@@ -49,5 +50,5 @@ jobs:
         EOF
     - name: Running the bot
       run: |
-        python notion_connection/connection.py
+        python simple_bot/connection.py
 
