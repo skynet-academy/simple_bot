@@ -24,6 +24,7 @@ jobs:
       with:
         python-version: "3.10"
     - name: Install dependencies
+      working-directory: ./notion_connection
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
@@ -37,3 +38,16 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Setting up the env variables
+      run: |
+        cat << EOF >> notion_connection/.env
+        NOTION_KEY=${{secrets.NOTION_KEY}}
+        TELEGRAM_TOKEN=${{secrets.TELEGRAM_TOKEN}}
+        NOTION_BASE_URL=${{secrets.NOTION_BASE_URL}}
+        NOTION_PAGE_ID=${{secrets.NOTION_PAGE_ID}}
+        TELEGRAM_URL_API=${{secrets.TELEGRAM_URL_API}}
+        EOF
+    - name: Running the bot
+      run: |
+        python notion_connection/connection.py
+
