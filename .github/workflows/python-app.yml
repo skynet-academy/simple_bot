@@ -47,5 +47,5 @@ jobs:
         EOF
     - name: Running the bot
       run: |
-        python connection.py
+        python connection.py & 
 
