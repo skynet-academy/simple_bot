@@ -36,7 +36,7 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Setting up the env variables
-      working-directory: ./simple_bot
+      working-directory: .
       run: |
         cat << EOF >> notion_connection/.env
         NOTION_KEY=${{secrets.NOTION_KEY}}
@@ -47,5 +47,5 @@ jobs:
         EOF
     - name: Running the bot
       run: |
-        python simple_bot/connection.py
+        python connection.py
 
